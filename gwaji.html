@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shafin Gida | Ciki da Raino</title>
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Modern fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=lato:wght@400;500;700&family=Raleway:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Your existing CSS code here */
+        /* I'll add the dark mode variables and toggle styles at the end */
+        
+        /* Theme toggle button styles */
+        .theme-toggle-container {
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-light);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Mobile theme toggle */
+        .mobile-theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 8px;
+            background-color: var(--primary-light);
+            color: var(--text);
+        }
+
+        .mobile-theme-toggle span {
+            font-weight: 500;
+        }
+
+        .theme-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .theme-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .theme-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .theme-slider {
+            background-color: var(--accent);
+        }
+
+        input:checked + .theme-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Responsive styles for theme toggle */
+        @media (max-width: 768px) {
+            .theme-toggle-container {
+                display: none;
+            }
+            
+            .mobile-theme-toggle {
+                display: flex;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-theme-toggle {
+                display: none;
+            }
+        }
+
+        /* Dark theme styles */
+        [data-theme="dark"] {
+            --background: #1a1a1a;
+            --text: #f0f0f0;
+            --text-light: #b0b0b0;
+            --surface: #2d2d2d;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] body {
+            background-color: var(--background);
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .navbar {
+            background-color: var(--surface);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .feature-card,
+        [data-theme="dark"] .article-card,
+        [data-theme="dark"] .testimonial-card,
+        [data-theme="dark"] .calculator-card,
+        [data-theme="dark"] .pregnancy-info,
+        [data-theme="dark"] .week-card,
+        [data-theme="dark"] .info-card,
+        [data-theme="dark"] .location-controls,
+        [data-theme="dark"] .hospital-list,
+        [data-theme="dark"] .tracker-card,
+        [data-theme="dark"] .health-tips-card {
+            background-color: var(--surface);
+            border-color: var(--border);
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #2d2d2d, #3d3d3d);
+        }
+
+        [data-theme="dark"] .partners {
+            background-color: var(--surface);
+        }
+
+        [data-theme="dark"] .features {
+            background-color: var(--background);
+        }
+
+        [data-theme="dark"] .faq-item {
+            background-color: var(--surface);
+        }
+
+        [data-theme="dark"] .bottom-nav {
+            background-color: var(--surface);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .nav-links li a,
+        [data-theme="dark"] .logo,
+        [data-theme="dark"] .section-title,
+        [data-theme="dark"] .feature-card h3,
+        [data-theme="dark"] .week-header h3,
+        [data-theme="dark"] .info-card h3 {
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .hero-subtitle,
+        [data-theme="dark"] .section-subtitle,
+        [data-theme="dark"] .feature-card p,
+        [data-theme="dark"] .trimester-info,
+        [data-theme="dark"] .milestones,
+        [data-theme="dark"] .milestones ul,
+        [data-theme="dark"] .info-item label {
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar [Menu] -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <img src="./image/logon.svg" alt="Logo"> <label for="">Ciki da Raino</label>
+        </a>
+       
+        <!-- Theme toggle for desktop -->
+        <div class="theme-toggle-container">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Shafin Gida</a></li>
+            <li><a class="disabled" href="blog.html">Shirin Daukar Ciki</a></li>
+            <li><a class="disabled" href="blog.html">Goyon Ciki</a></li>
+            <li><a href="contact.html">Tuntuɓe Mu</a></li>
+            <li><a href="about.html">Game Da Mu</a></li>
+            <li><a href="hosapital.html">Asibiti Mafi Kusa</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </button>
+    </nav>
+    
+    <!-- Mobile Menu [Menu na wayar hannu] -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-menu-container" id="mobile-menu-container">
+        <div class="mobile-menu-header">
+            <button class="close-menu" id="close-menu" aria-label="Close menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <!-- Theme toggle for mobile -->
+        <div class="mobile-theme-toggle">
+            <span>Dark Mode</span>
+            <label class="theme-switch">
+                <input type="checkbox" id="mobile-theme-toggle">
+                <span class="theme-slider"></span>
+            </label>
+        </div>
+        <div class="mobile-menu">
+            <a href="index.html" class="drawer-menu-item">
+                <i class="fas fa-home"></i>
+                <span>Shafin Gida</span>
+            </a>
+            <a href="./ovulation/ovulation.html" class="drawer-menu-item">
+                <i class="fas fa-venus-mars"></i>
+                <span>Kalkuletar Ovulation</span>
+            </a>
+            <a href="./tracker/tracker.html" class="drawer-menu-item">
+                <i class="fas fa-baby-carriage"></i>
+                <span>Bibiyar Ciki</span>
+            </a>
+            <a href="./hospital/hospital.html" class="drawer-menu-item">
+                <i class="fas fa-hospital"></i>
+                <span>Asibitoci Mafi Kusa</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item">
+            <i class="fas fa-home"></i>
+            <span>Gida</span>
+        </a>
+        <a href="./ovulation/ovulation.html" class="bottom-nav-item">
+            <i class="fas fa-venus-mars"></i>
+            <span>Ovulation</span>
+        </a>
+        <a href="./tracker/tracker.html" class="bottom-nav-item">
+            <i class="fas fa-baby-carriage"></i>
+            <span>Bibiyar Ciki</span>
+        </a>
+        <a href="./hospital/hospital.html" class="bottom-nav-item">
+            <i class="fas fa-hospital"></i>
+            <span>Asibiti</span>
+        </a>
+        <a href="./marketplace/kasuwa.html" class="bottom-nav-item">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Kasuwa</span>
+        </a>
+    </nav>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileMenuContainer = document.getElementById('mobile-menu-container');
+        const overlay = document.getElementById('overlay');
+        
+        hamburger.addEventListener('click', function() {
+            mobileMenuContainer.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeMenu.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        overlay.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenuContainer.classList.remove('open');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // FAQ Toggle Function
+        function toggleFAQ(question) {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            
+            question.setAttribute('aria-expanded', !isExpanded);
+            answer.classList.toggle('active');
+            
+            if (answer.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Active nav link highlighting
+        document.addEventListener('DOMContentLoaded', function () {
+            const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+            const currentPage = window.location.pathname.split('/').pop();
+
+            navItems.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Dark/Light mode toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const htmlElement = document.documentElement;
+
+        // Check for saved theme preference or respect OS preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        // Set initial theme
+        if (savedTheme) {
+            htmlElement.setAttribute('data-theme', savedTheme);
+            if (savedTheme === 'dark') {
+                mobileThemeToggle.checked = true;
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        } else if (prefersDark) {
+            htmlElement.setAttribute('data-theme', 'dark');
+            mobileThemeToggle.checked = true;
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        // Desktop theme toggle
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Mobile theme toggle
+        mobileThemeToggle.addEventListener('change', () => {
+            const newTheme = mobileThemeToggle.checked ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            // Only apply if user hasn't explicitly set a preference
+            if (!localStorage.getItem('theme')) {
+                const newTheme = e.matches ? 'dark' : 'light';
+                htmlElement.setAttribute('data-theme', newTheme);
+                mobileThemeToggle.checked = e.matches;
+                themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
