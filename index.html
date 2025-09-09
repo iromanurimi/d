@@ -124,7 +124,7 @@
                         </div>
                         <h3>Kalkuletar Ovulation</h3>
                         <p>Hasasho kwanakin da zaku iya daukar ciki da kwanakin ovulation cikin sauki.</p>
-                        <button class="btn btn-primary">Gwada Yanzu</button>
+                        <button class="btn btn-secondary">Gwada Yanzu</button>
                     </div>
                 </a>
                 <a href="tracker.html" class="feature-link">
@@ -134,23 +134,75 @@
                         </div>
                         <h3>Kalkuletar Bibiyar Ciki</h3>
                         <p>Bibiyi ci gaban jaririnki mako bayan mako tare da shawarwari na musamman da suka da ce.</p>
-                        <button class="btn btn-primary">Fara Bibiya</button>
+                        <button class="btn btn-secondary">Fara Bibiya</button>
                     </div>
                 </a>
-                <a href="./articles/makaloli.html" class="feature-link">
+                <a href="#" class="feature-link">
                     <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="feature-icon">
                             <i class="fas fa-book-open"></i>
                         </div>
                         <h3>Karanta Makaloli</h3>
                         <p>Karanta rubuttukamu akan lafiyar uwa da jaririnta a lokacin daukar ciki da raino.</p>
-                        <button class="btn btn-primary">Karanta Yanzu</button>
+                        <button class="btn btn-secondary">Karanta Yanzu</button>
                     </div>
                 </a>
             </div>
         </div>
     </section>
-
+    
+    
+    
+    
+    
+   <footer class="footer"  style="display: none;">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Ciki da Raino</h3>
+                    <p>Jarida domin lafiyar uwa da ta jariri</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Hanyoyin Hanya</h4>
+                    <ul>
+                        <li><a href="index.html">Shafin Gida</a></li>
+                        <li><a href="about.html">Game Da Mu</a></li>
+                        <li><a href="blog.html">Labarai</a></li>
+                        <li><a href="contact.html">Tuntuɓe Mu</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Kayan Aiki</h4>
+                    <ul>
+                        <li><a href="ovulation.html">Kalkuletar Ovulation</a></li>
+                        <li><a href="tracker.html">Bibiyar Ciki</a></li>
+                        <li><a href="hospital.html">Asibitoci Mafi Kusa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Kasance da Sabbin Labarai</h4>
+                    <form class="footer-newsletter-form">
+                        <input type="email" placeholder="Adireshin email" required aria-label="Email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p style="color: aliceblue;">&copy; <span id="year"></span> Yar'aro Creative. All rights reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">07062121414</a>
+                    <a href="#">cikidarainocommunity@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
 </hide>
     <!-- JavaScript -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -198,24 +250,7 @@
             });
         });
         
-        // FAQ Toggle Function
-        function toggleFAQ(question) {
-            const answer = question.nextElementSibling;
-            const icon = question.querySelector('i');
-            const isExpanded = question.getAttribute('aria-expanded') === 'true';
-            
-            question.setAttribute('aria-expanded', !isExpanded);
-            answer.classList.toggle('active');
-            
-            if (answer.classList.contains('active')) {
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
-            } else {
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            }
-        }
-
+       
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -248,4 +283,3 @@
     </script>
 </body>
 </html>
-
